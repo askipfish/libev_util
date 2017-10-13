@@ -6,9 +6,9 @@
 
 
 测试：
-        cd test; make; 
-        ./test_ev tcp_srv;
-        ./test_ev tcp_cli;
+        编译测试 cd test; make; 
+        启动测试服务端 ./test_ev tcp_srv;
+        启动测试客户端  ./test_ev tcp_cli;
 	
 
 
