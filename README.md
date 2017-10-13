@@ -4,7 +4,10 @@
 3. 信息接收采用预分配加动态调整，性能和内存取得很好的平衡。
 4. 支持定时回调上层逻辑
 
-test:
-	cd test; make; ./test_ev 
+
+测试：
+	cd test; make; 
+	./test_ev tcp_srv
+	./test_ev tcp_cli
 
 
