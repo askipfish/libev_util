@@ -6,11 +6,8 @@
 
 
 测试：
-
-	cd test; make; 
-
+        cd test; make; 
         ./test_ev tcp_srv;
-	
         ./test_ev tcp_cli;
 	
 
