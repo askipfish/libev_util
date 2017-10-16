@@ -6,21 +6,25 @@
 
 接口例子：
 
-void test_tcp_srv()
-{
-    const char *ip = "127.0.0.1";
-    unsigned int port = 1235;
+<p>void test_tcp_srv()<br/>
+{<br/>
+    const char *ip = &quot;127.0.0.1&quot;;<br/>
+    unsigned int port = 1235;</p>
 
-    ev_srv_init(&evSrv);
-    
-    int iRet = ev_srv_bind_ip(&evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);// 回调
-    YG_ASSERT_RET(iRet > 0, );
+<pre><code>ev_srv_init(&amp;evSrv);
+</code></pre>
 
-    iRet = ev_srv_add_timer(&evSrv, ts_timer_fun, 1000 * 3); // 3s回调，便于执行定时操作
-    YG_ASSERT_RET(iRet >= 0, );
+<p>   int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);// 回调<br/>
+    YG_ASSERT_RET(iRet &gt; 0, );</p>
 
-    ev_srv_run(&evSrv);
-}
+<p>   iRet = ev_srv_add_timer(&amp;evSrv, ts_timer_fun, 1000 * 3); // 3s回调，便于执行定时操作<br/>
+    YG_ASSERT_RET(iRet &gt;= 0, );</p>
+
+<pre><code>ev_srv_run(&amp;evSrv);
+</code></pre>
+
+<p>}</p>
+
 
 
 
