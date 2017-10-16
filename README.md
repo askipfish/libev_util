@@ -5,6 +5,37 @@
 4. 支持定时回调上层逻辑
 
 接口例子：
+<p>int ts_accept_fun(int sfd, int cfd, struct sockaddr *addr, int addrLen)<br/>
+{<br/>
+    fprintf(stderr, &quot;[srv] accept srv_fd: %d,  cli_fd: %d, addrLen: %d\n&quot;, sfd, cfd, addrLen);</p>
+
+<pre><code>return 0;
+</code></pre>
+
+<p>}</p>
+
+<p>// pkg 是个完整的应用层协议包，headCmd 是客户端用来标示pkg解包协议<br/>
+int ts_pkg_fun(int sock, struct sockaddr *addr, unsigned int addrLen, const char *pkg, unsigned int pkgLen, unsigned int headCmd)<br/>
+{<br/>
+    static int cc = 0;<br/>
+    fprintf(stderr, &quot;[srv] sock: %d, pkg: %s, pkg_len: %d, head_cmd: %d\n&quot;, sock, pkg, pkgLen, headCmd);</p>
+
+<pre><code>return 0;
+</code></pre>
+
+<p>}</p>
+
+<p>int ts_close_fun(int sock)<br/>
+{<br/>
+    fprintf(stderr, &quot;[srv] cli sock: %d close\n&quot;, sock);<br/>
+    return 0;<br/>
+}</p>
+
+<p>int ts_timer_fun()<br/>
+{<br/>
+    fprintf(stderr, &quot;[srv] timer exec, time: %d\n&quot;, time(NULL));<br/>
+    return 0;<br/>
+}</p>
 
 <p>void test_tcp_srv()<br/>
 {<br/>
@@ -14,16 +45,17 @@
 <pre><code>ev_srv_init(&amp;evSrv);
 </code></pre>
 
-<p>   int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);// 设置事件回调<br/>
+<p>   int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);<br/>
     YG_ASSERT_RET(iRet &gt; 0, );</p>
 
-<p>   iRet = ev_srv_add_timer(&amp;evSrv, ts_timer_fun, 1000 * 3); // 3s回调，便于执行定时操作<br/>
+<p>   iRet = ev_srv_add_timer(&amp;evSrv, ts_timer_fun, 1000 * 3); <br/>
     YG_ASSERT_RET(iRet &gt;= 0, );</p>
 
 <pre><code>ev_srv_run(&amp;evSrv);
 </code></pre>
 
 <p>}</p>
+
 
 
 
