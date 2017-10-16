@@ -33,12 +33,12 @@ int ts_pkg_fun(int sock, struct sockaddr *addr, unsigned int addrLen, const char
 <p>void test_tcp_srv()<br/>
 {<br/>
     const char *ip = &quot;127.0.0.1&quot;;<br/>
-    unsigned int port = 1235;<br/>
-    ev_srv_init(&amp;evSrv);<br/>
+    unsigned int port = 1235;<br/><br/>
+    ev_srv_init(&amp;evSrv);<br/><br/>
     int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);<br/>
-    YG_ASSERT_RET(iRet &gt; 0, );<br/>
+    YG_ASSERT_RET(iRet &gt; 0, );<br/><br/>
     iRet = ev_srv_add_timer(&amp;evSrv, ts_timer_fun, 1000 * 3); <br/>
-    YG_ASSERT_RET(iRet &gt;= 0, );<br/>
+    YG_ASSERT_RET(iRet &gt;= 0, );<br/><br/>
     ev_srv_run(&amp;evSrv);<br/>
 }</p>
 
