@@ -14,7 +14,7 @@
 <pre><code>ev_srv_init(&amp;evSrv);
 </code></pre>
 
-<p>   int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);// 回调<br/>
+<p>   int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);// 设置事件回调<br/>
     YG_ASSERT_RET(iRet &gt; 0, );</p>
 
 <p>   iRet = ev_srv_add_timer(&amp;evSrv, ts_timer_fun, 1000 * 3); // 3s回调，便于执行定时操作<br/>
