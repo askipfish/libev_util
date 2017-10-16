@@ -14,13 +14,9 @@
 <p>// pkg 是个完整的应用层协议包，headCmd 是客户端用来标示pkg解包协议<br/>
 int ts_pkg_fun(int sock, struct sockaddr *addr, unsigned int addrLen, const char *pkg, unsigned int pkgLen, unsigned int headCmd)<br/>
 {<br/>
-    static int cc = 0;<br/>
-    fprintf(stderr, &quot;[srv] sock: %d, pkg: %s, pkg_len: %d, head_cmd: %d\n&quot;, sock, pkg, pkgLen, headCmd);</p>
-
-<pre><code>return 0;
-</code></pre>
-
-<p>}</p>
+    fprintf(stderr, &quot;[srv] sock: %d, pkg: %s, pkg_len: %d, head_cmd: %d\n&quot;, sock, pkg, pkgLen, headCmd);<br/><br/>
+    return 0;<br/>
+}</p>
 
 <p>int ts_close_fun(int sock)<br/>
 {<br/>
@@ -37,23 +33,14 @@ int ts_pkg_fun(int sock, struct sockaddr *addr, unsigned int addrLen, const char
 <p>void test_tcp_srv()<br/>
 {<br/>
     const char *ip = &quot;127.0.0.1&quot;;<br/>
-    unsigned int port = 1235;</p>
-
-<pre><code>ev_srv_init(&amp;evSrv);
-</code></pre>
-
-<p>   int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);<br/>
-    YG_ASSERT_RET(iRet &gt; 0, );</p>
-
-<p>   iRet = ev_srv_add_timer(&amp;evSrv, ts_timer_fun, 1000 * 3); <br/>
-    YG_ASSERT_RET(iRet &gt;= 0, );</p>
-
-<pre><code>ev_srv_run(&amp;evSrv);
-</code></pre>
-
-<p>}</p>
-
-
+    unsigned int port = 1235;<br/>
+    ev_srv_init(&amp;evSrv);<br/>
+    int iRet = ev_srv_bind_ip(&amp;evSrv, ip, port, ts_accept_fun, ts_pkg_fun, ts_close_fun, 0, -1, 5);<br/>
+    YG_ASSERT_RET(iRet &gt; 0, );<br/>
+    iRet = ev_srv_add_timer(&amp;evSrv, ts_timer_fun, 1000 * 3); <br/>
+    YG_ASSERT_RET(iRet &gt;= 0, );<br/>
+    ev_srv_run(&amp;evSrv);<br/>
+}</p>
 
 
 
