@@ -7,12 +7,9 @@
 接口例子：
 <p>int ts_accept_fun(int sfd, int cfd, struct sockaddr *addr, int addrLen)<br/>
 {<br/>
-    fprintf(stderr, &quot;[srv] accept srv_fd: %d,  cli_fd: %d, addrLen: %d\n&quot;, sfd, cfd, addrLen);</p>
-
-<pre><code>return 0;
-</code></pre>
-
-<p>}</p>
+    fprintf(stderr, &quot;[srv] accept srv_fd: %d,  cli_fd: %d, addrLen: %d\n&quot;, sfd, cfd, addrLen);<br/>
+    return 0;<br/>
+}</p>
 
 <p>// pkg 是个完整的应用层协议包，headCmd 是客户端用来标示pkg解包协议<br/>
 int ts_pkg_fun(int sock, struct sockaddr *addr, unsigned int addrLen, const char *pkg, unsigned int pkgLen, unsigned int headCmd)<br/>
