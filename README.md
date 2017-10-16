@@ -14,7 +14,7 @@
 <p>// pkg 是个完整的应用层协议包，headCmd 是客户端用来标示pkg解包协议<br/>
 int ts_pkg_fun(int sock, struct sockaddr *addr, unsigned int addrLen, const char *pkg, unsigned int pkgLen, unsigned int headCmd)<br/>
 {<br/>
-    fprintf(stderr, &quot;[srv] sock: %d, pkg: %s, pkg_len: %d, head_cmd: %d\n&quot;, sock, pkg, pkgLen, headCmd);<br/><br/>
+    fprintf(stderr, &quot;[srv] sock: %d, pkg: %s, pkg_len: %d, head_cmd: %d\n&quot;, sock, pkg, pkgLen, headCmd);<br/>
     return 0;<br/>
 }</p>
 
