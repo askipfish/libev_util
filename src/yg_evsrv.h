@@ -104,7 +104,7 @@ struct EvMsNode
 	struct EvMsNode *pnext;
 };
 
-#define EV_MS_SLOT_NUM 1024
+#define EV_MS_SLOT_NUM 10240
 struct EvMsMap
 {
 	struct EvMsNode *pList[EV_MS_SLOT_NUM];
